@@ -13,8 +13,10 @@ import { Readable, PassThrough } from 'stream';
 // Safely construct the path to yt-dlp binary
 const getYtDlpPath = () => {
   const isWin = os.platform() === 'win32';
-  const binaryName = isWin ? 'yt-dlp.exe' : 'yt-dlp';
-  return path.join(process.cwd(), 'node_modules', 'youtube-dl-exec', 'bin', binaryName);
+  if (isWin) {
+    return path.join(process.cwd(), 'node_modules', 'youtube-dl-exec', 'bin', 'yt-dlp.exe');
+  }
+  return path.join(process.cwd(), 'bin', 'yt-dlp_linux');
 };
 
 // Safely construct the path to ffmpeg binary

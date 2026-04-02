@@ -6,6 +6,9 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ['youtube-dl-exec', 'fluent-ffmpeg', 'ffmpeg-static'],
+    outputFileTracingIncludes: {
+      '/api/**/*': ['./bin/**/*'],
+    },
   },
   async headers() {
     return [
